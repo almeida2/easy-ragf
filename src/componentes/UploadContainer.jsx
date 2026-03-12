@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import UploadUI from './UploadUI';
 
-const API_URL = "http://localhost:8080/documents/upload";
+const API_URL = "http://localhost:8080/api/indexing/upload";
 
 const UploadContainer = () => {
     const [files, setFiles] = useState([]);
