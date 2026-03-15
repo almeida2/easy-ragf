@@ -41,6 +41,17 @@ const FileItem = ({ file, onRemove }) => {
 };
 
 const UploadUI = ({ files, onFileSelect, onUpload, onClear, uploadStatus }) => {
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            onFileSelect({ target: { files: e.dataTransfer.files } });
+        }
+    };
+
     return (
         <div className="upload-wrapper">
             {/* Header Simples */}
@@ -61,7 +72,7 @@ const UploadUI = ({ files, onFileSelect, onUpload, onClear, uploadStatus }) => {
                     <div className="upload-card">
                         {/* Dropzone */}
                         <div className="dropzone-container">
-                            <label className="dropzone-label">
+                            <label className="dropzone-label" onDragOver={handleDragOver} onDrop={handleDrop}>
                                 <input type="file" multiple className="file-input" onChange={onFileSelect} accept=".pdf,.docx,.txt" />
                                 <div className="icon-circle">
                                     <span className="material-symbols-outlined" style={{ fontSize: '2.5rem', color: '#adb5bd' }}>upload_file</span>
