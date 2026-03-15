@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import UploadUI from './UploadUI';
 
-const API_URL = "https://easy-ragb-62a8ea363b1b.herokuapp.com/api/upload";
+const API_URL = "https://easy-ragb-62a8ea363b1b.herokuapp.com/api/indexing/upload";
 
 const UploadContainer = () => {
     const [files, setFiles] = useState([]);

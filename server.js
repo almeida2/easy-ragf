@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Redireciona todas as outras requisições para o `index.html`
 // (Muito importante para aplicações React tipo Single Page Application)
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 

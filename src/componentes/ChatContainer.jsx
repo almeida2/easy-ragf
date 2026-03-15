@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ChatUI from './ChatUI';
 
-const API_URL = "https://easy-ragb-62a8ea363b1b.herokuapp.com/api/consultar";
+const API_URL = "https://easy-ragb-62a8ea363b1b.herokuapp.com/api/retrieval/consultar";
 
 const ChatContainer = () => {
     const [messages, setMessages] = useState([]);
