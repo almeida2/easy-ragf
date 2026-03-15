@@ -11,17 +11,17 @@ function App() {
       <nav className="app-nav">
         <div className="nav-brand">
           <span className="material-symbols-outlined">dataset</span>
-          <h1>EasyRAG</h1>
+          <h1>SIGVS - Chat de Consulta</h1>
         </div>
         <div className="nav-links">
-          <button 
+          <button
             className={`nav-item ${activeTab === 'upload' ? 'active' : ''}`}
             onClick={() => setActiveTab('upload')}
           >
             <span className="material-symbols-outlined">cloud_upload</span>
             Upload
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'chat' ? 'active' : ''}`}
             onClick={() => setActiveTab('chat')}
           >
