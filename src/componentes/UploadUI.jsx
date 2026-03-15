@@ -10,8 +10,15 @@ const FileItem = ({ file, onRemove }) => {
                     <span className="material-symbols-outlined">description</span>
                 </div>
                 <div className="file-details">
-                    <p className="file-name">{file.name}</p>
-                    <p className="file-size">{(file.size / 1024).toFixed(1)} KB</p>
+                    <p className="file-name" title={file.name}>{file.name}</p>
+                    <p className="file-size">
+                        {(file.size / 1024).toFixed(1)} KB
+                        {file.status === 'error' && file.errorMessage && (
+                            <span style={{ color: '#fa5252', marginLeft: '6px', fontWeight: '500' }}>
+                                - {file.errorMessage}
+                            </span>
+                        )}
+                    </p>
                 </div>
             </div>
 

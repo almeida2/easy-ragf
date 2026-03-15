@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ChatUI from './ChatUI';
 
-const API_URL = "http://localhost:8080/api/retrieval/consultar";
+const API_URL = "https://easy-ragb-62a8ea363b1b.herokuapp.com/api/consultar";
 
 const ChatContainer = () => {
     const [messages, setMessages] = useState([]);
@@ -36,7 +36,7 @@ const ChatContainer = () => {
 
             // O backend retorna String pura (ResponseEntity<String>)
             const answer = await response.text();
-            
+
             const botMessage = {
                 role: 'bot',
                 content: answer || "Desculpe, não consegui encontrar uma resposta."

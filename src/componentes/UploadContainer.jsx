@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import UploadUI from './UploadUI';
 
-const API_URL = "http://localhost:8080/api/indexing/upload";
+const API_URL = "https://easy-ragb-62a8ea363b1b.herokuapp.com/api/upload";
 
 const UploadContainer = () => {
     const [files, setFiles] = useState([]);
@@ -36,11 +36,19 @@ const UploadContainer = () => {
             if (response.ok) {
                 updateFileState(fileObj.id, { status: 'success', progress: 100 });
             } else {
-                updateFileState(fileObj.id, { status: 'error' });
-                throw new Error('Upload failed');
+                let errorMessage = 'Falha no upload';
+                try {
+                    const errData = await response.json();
+                    errorMessage = errData.error || errData.message || errData.detail || errorMessage;
+                } catch (e) {
+                    const text = await response.text();
+                    if (text) errorMessage = text;
+                }
+                updateFileState(fileObj.id, { status: 'error', errorMessage });
+                throw new Error(errorMessage);
             }
         } catch (error) {
-            updateFileState(fileObj.id, { status: 'error' });
+            updateFileState(fileObj.id, { status: 'error', errorMessage: error.message || 'Erro de conexão' });
             throw error;
         }
     };
